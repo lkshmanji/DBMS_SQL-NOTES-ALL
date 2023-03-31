@@ -1,0 +1,43 @@
+create table Employee(empid number(10), fname varchar(20), Lname varchar2(30), email varchar(40),address varchar(60));
+create table Employee (eid number(10) not null primary key,ename varchar(100), mobnum varchar2(20));
+
+CREATE TABLE STUDENTS ( SID number(10) NOT NULL primary key, NAME VARCHAR2(20) NOT NULL, AGE number NOT NULL, ADDRESS varchar (25));
+
+CREATE TABLE people (pid number NOT NULL PRIMARY KEY,fname VARCHAR2(100) NOT NULL, lname VARCHAR2(100) NOT NULL, address VARCHAR2(20), DateofBirt  DATE);
+
+CREATE TABLE people (pid number NOT NULL PRIMARY KEY,fname VARCHAR2(100) NOT NULL, lname VARCHAR2(100) NOT NULL, address VARCHAR2(20), DateofBirt  DATE);
+CREATE TABLE people (pid number NOT NULL PRIMARY KEY,fname VARCHAR2(100) NOT NULL, lname VARCHAR2(100) NOT NULL, address VARCHAR2(20), DateofBirt  DATE);
+
+INSERT INTO people(pid, fname, lname,address, DateofBirt  ) VALUES (102, 'Dave', 'Badger', 'Mr', date'1960-05-01');
+INSERT INTO people(pid, fname, lname,address, DateofBirt  ) VALUES (103, 'Dave', 'Badger', 'Mr', date'1960-05-01');
+INSERT INTO people(pid, fname, lname,address, DateofBirt  ) VALUES (104, 'Dave', 'Badger', 'Mr', date'1960-05-01');
+INSERT INTO people(pid, fname, lname,address, DateofBirt  ) VALUES (105, 'Dave', 'Badger', 'Mr', date'1960-05-01');
+INSERT INTO people(pid, fname, lname,address, DateofBirt  ) VALUES (106, 'Dave', 'Badger', 'Mr', date'1960-05-01');
+DATE'2009-12-31'
+INSERT INTO suppliers (supplier_id, supplier_name) VALUES (1000, 'Google');  
+
+
+INSERT INTO people(SID , name, AGE ,ADDRESS ) VALUES (102, 'Dave', 101, 'bhopal');
+
+UPDATE people SET fname = 'Kingfisher' WHERE pid = 103;  
+
+select DISTINCT fname from people;
+SQL> select DISTINCT fname from people;
+
+DELETE FROM people WHERE pid= 104;  
+
+
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    PRIMARY KEY (ID)
+);
+
+CREATE TABLE Persons (
+    ID int NOT NULL PRIMARY KEY,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int
+)

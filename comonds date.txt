@@ -1,0 +1,318 @@
+
+SQL> INSERT INTO persons(id, name, birth_date, phone) VALUES(1,'Peter Wilson', '1990-07-15', '0711-020361');
+INSERT INTO persons(id, name, birth_date, phone) VALUES(1,'Peter Wilson', '1990-07-15', '0711-020361')
+                                                                          *
+ERROR at line 1:
+ORA-01861: literal does not match format string
+
+
+SQL> INSERT INTO persons(id, name, birth_date, phone) VALUES(1,'Peter Wilson', '1990-07-15', 0711-020361');
+ERROR:
+ORA-01756: quoted string not properly terminated
+
+
+SQL> create table customers (customer_id number(10), first_name varchar2(100), Last_name varchar2(100), dob date, phonumb varchar2(15));
+
+Table created.
+
+SQL> desc customers;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CUSTOMER_ID                                        NUMBER(10)
+ FIRST_NAME                                         VARCHAR2(100)
+ LAST_NAME                                          VARCHAR2(100)
+ DOB                                                DATE
+ PHONUMB                                            VARCHAR2(15)
+
+SQL> insert into customers (CUSTOMER_ID, FIRST_NAME, LAST_NAME, DOB, PHONUMB) values(101,'lakshman','ji', '1983-10-01', '9006444');
+insert into customers (CUSTOMER_ID, FIRST_NAME, LAST_NAME, DOB, PHONUMB) values(101,'lakshman','ji', '1983-10-01', '9006444')
+                                                                                                     *
+ERROR at line 1:
+ORA-01861: literal does not match format string
+
+
+SQL> insert into customers (CUSTOMER_ID, FIRST_NAME, LAST_NAME, DOB, PHONUMB) values(101,'lakshman','ji','1983-10-01', '9006444');
+insert into customers (CUSTOMER_ID, FIRST_NAME, LAST_NAME, DOB, PHONUMB) values(101,'lakshman','ji','1983-10-01', '9006444')
+                                                                                                    *
+ERROR at line 1:
+ORA-01861: literal does not match format string
+
+
+SQL> insert into customers (CUSTOMER_ID, FIRST_NAME, LAST_NAME, DOB, PHONUMB) values(101,'lakshman','ji', Date '1983-10-01', '9006444');
+
+1 row created.
+
+SQL> select * from customers;
+
+CUSTOMER_ID
+-----------
+FIRST_NAME
+--------------------------------------------------------------------------------
+LAST_NAME
+--------------------------------------------------------------------------------
+DOB       PHONUMB
+--------- ---------------
+        101
+lakshman
+ji
+01-OCT-83 9006444
+
+INSERT INTO customers ( customer_id, first_name, last_name, dob, phone) VALUES (11, 'Roger', 'Federer', DATE '1983-10-01', '001-001-0001');
+SELECT customer_id, TO_CHAR(dob, 'MONTH DD, YYYY')
+FROM customers;
+
+do not rely on implicit conversion but use the TO_DATE function to convert a literal to a date:
+
+
+INSERT INTO proj_task_details (task_id, based_on, task_in_charge, task_start_date, task_end_date)  
+
+values ('02', '01','KOCHAR', TO_DATE('13-SEP-07', 'DD-MON-RR'), TO_DATE('14-SEP-07', 'DD-MON-RR'));
+
+INSERT INTO proj_task_details (task_id, based_on, task_in_charge, task_start_date, task_end_date) 
+
+
+values ('02', '01','KOCHAR', to_date('13-SEP-2007','dd-mon-rrrr'), to_date('14-SEP-2007','dd-mon-rrrr'));
+
+
+
+INSERT INTO proj_task_details (task_id, based_on, task_in_charge, task_start_date, task_end_date) 
+
+
+values ('03', '01','KOCHAR', to_date('13-SEP-07','dd-mon-rr'), to_date('14-SEP-07','dd-mon-rr'));
+
+
+CREATE TABLE proj_task_details (task_id NUMBER(10) PRIMARY KEY NOT NULL,
+
+
+                                                    based_on number(10),
+
+
+                                                    task_in_charge VARCHAR2(30),
+
+
+                                                    task_start_date DATE,
+
+
+                                                    task_end_date DATE
+
+
+                                                    );
+
+INSERT INTO proj_task_details (task_id, based_on, task_in_charge, task_start_date, task_end_date)
+
+
+values ('02', '01','KOCHAR', '13-SEP-07', '14-SEP-07');
+
+
+It throws the below error.
+
+INSERT INTO proj_task_details (task_id, based_on, task_in_charge, task_start_date, task_end_date)
+
+values ('02', '01','KOCHAR', '13-SEP-07', '14-SEP-07')
+
+INSERT INTO proj_task_details (task_id, based_on, task_in_charge, task_start_date, task_end_date) 
+values ('02', '01','KOCHAR', to_date('13-SEP-07','dd-MON-rr'), to_date('14-SEP-07','dd-MON-rr'))
+
+do not rely on implicit conversion but use the TO_DATE function to convert a literal to a date:
+
+
+INSERT INTO proj_task_details (task_id, based_on, task_in_charge, task_start_date, task_end_date)  
+
+values ('02', '01','KOCHAR', TO_DATE('13-SEP-07', 'DD-MON-RR'), TO_DATE('14-SEP-07', 'DD-MON-RR'));
+
+
+INSERT INTO WORKON (STAFFNO,CAMPAIGNTITLE,DATETIME,HOURS)
+VALUES ('102','Machanic Summer Savings',TO_DATE('22/April/2011 8:30:00AM','DD/MON/YY HH:MI:SSAM'),'3')
+;
+
+CREATE TABLE WorkOn
+(
+    StaffNo        NCHAR(4),
+    CampaignTitle  VARCHAR(50),
+    DateTime       DATE,
+    Hours          VARCHAR(2)
+)
+;
+
+CREATE TABLE TEST_TABLE
+ (test_SEQ     NUMBER(9,0) NOT NULL
+ ,test_name   VARCHAR2(25)
+ ,test_DOB     DATE        NOT NULL
+ )
+
+To put in a row would be :
+?
+1
+2
+3
+4
+5
+6
+7
+8
+9
+SQL> INSERT INTO TEST_TABLE
+  2   ( test_seq,test_name,test_dob)
+  3   VALUES
+  4   ( 1, 'JOE', to_date('30-08-1980', 'DD-MM-YYYY') )
+  5  /
+ 
+1 row created.
+ 
+SQL>
+
+
+Example:
+SELECT SYSDATE FROM DUAL;
+Output:
+
+SYSDATE Function in Oracle
+
+Example:
+SELECT SYSDATE+10 FROM DUAL;
+Output:
+
+SYSDATE Date Function in Oracle with Examples
+
+Example:
+SELECT SYSDATE-10 FROM DUAL;
+Output:
+
+SYSDATE Date Function in Oracle
+
+The SYSDATE() function in oracle is the most commonly used date function. The Oracle date function SYSDATE() returns the current date and time in the default Oracle date format. The default format for the date returned is MM-DD-YY. It is also very common to use the Oracle date function SYSDATE() in conjunction with the to_char() function. For example,
+
+SELECT TO_CHAR(SYSDATE, ‘MM-DD-YYYY HH:MI:SS’) “NOW” FROM DUAL;
+
+Output:
+SYSDATE Date Function in Oracle
+
+This Oracle date function returns a string containing not only the current date but also the current time down to the second.
+
+ADD_MONTHS() Function in Oracle:
+The ADD_MONTHS date function in Oracle is used to return the date with a given number of months added (date plus integer months). The following is the syntax to use the ADD_MONTHS date function in Oracle.
+
+Syntax: ADD_MONTHS(date, integer)
+
+Parameters:
+
+Date: It can be a DateTime value or any value that can be implicitly converted to DATE.
+Integer: It can be an integer number or any value that can be implicitly converted to an integer.
+Note: The return type is always going to be DATE, regardless of the datatype of date. If the date is the last day of the month or if the resulting month has fewer days than the day component of the date, then the result is the last day of the resulting month. Otherwise, the result has the same day component as the date.
+
+Example: To get the today system day date after 2 months.
+SELECT ADD_MONTHS(SYSDATE, 2) FROM DUAL;
+Output:
+
+ADD_MONTHS() Function in Oracle
+
+Example: To get the today system day date before 2 months.
+SELECT ADD_MONTHS(SYSDATE,-2) FROM DUAL;
+Output:
+
+ADD_MONTHS() Date Function in Oracle with Examples
+
+LAST_DAY() Function in Oracle:
+The LAST_DAY() date function in Oracle is used to return the last day of the month that contains a date. The return type is always going to be DATE type regardless of the data type of date. The syntax to use the LAST_DAY() date function in Oracle is given below.
+
+Syntax: LAST_DAY(date)
+
+Parameter:
+
+date: The specified date value.
+Example:
+SELECT LAST_DAY(SYSDATE) FROM DUAL;
+Output:
+
+LAST_DAY() Function in Oracle
+
+Example: The following query determines how many days are left in the current month.
+
+SELECT SYSDATE, LAST_DAY(SYSDATE) "Last", LAST_DAY(SYSDATE) - SYSDATE "Days Left" FROM DUAL;
+Output:
+
+LAST_DAY() Function in Oracle with Examples
+
+NEXT_DAY() Date Function in Oracle:
+The NEXT_DAY date function in Oracle is used to return the date of the first weekday that is later than the date. The syntax to use the oracle NEXT_DAY function is given below.
+
+Syntax: NEXT_DAY(DATE,'<DAY_NAME>’)
+
+Parameters:
+
+Date: A date value used to get the next weekday.
+DAY_NAME: must be a day of the week in the date language of your session, either the full name or the abbreviation. The minimum number of letters required is the number of letters in the abbreviated version. Any characters immediately following the valid abbreviation are ignored.
+Note: The return type is always going to be DATE regardless of the data type of date. The return value has the same hours, minutes, and seconds component as the argument date.
+
+Example:
+
+SELECT NEXT_DAY(SYSDATE,'MONDAY') FROM DUAL;
+Output:
+
+NEXT_DAY() Date Function in Oracle
+
+Example:
+SELECT NEXT_DAY(SYSDATE,’FRIDAY’) FROM DUAL;
+Output:
+
+NEXT_DAY() Date Function in Oracle with Examples
+
+MONTHS_BETWEEN() Function in Oracle:
+The MONTHS_BETWEEN() date function in oracle is used to get the number of months between two dates (date1, date2). While working with the MONTHS_BETWEEN() date function in oracle, we need to keep in mind the following conditions:
+
+If date1 is later than date2, then the result is positive.
+If date1 is earlier than date2, then the result is negative.
+If date1 and date2 are either the same days of the month or both last days of months, then the result is always an integer.
+Otherwise, Oracle Database calculates the fractional portion of the result based on a 31-day month and considers the difference in time components date1 and date2.
+Following is the syntax to use the MONTHS_BETWEEN() date function in oracle.
+
+Syntax: MONTHS_BETWEEN(DATE1, DATE2)
+
+Parameters:
+
+DATE1: The first date
+DATE2: The second date.
+Example:
+SELECT MONTHS_BETWEEN(’05-JAN-81',’05-JAN-80') FROM DUAL;
+Output:
+
+MONTHS_BETWEEN() Function in Oracle
+
+Example:
+SELECT MONTHS_BETWEEN(’05-JAN-80',’05-JAN-81') FROM DUAL;
+Output:
+
+MONTHS_BETWEEN() Function in Oracle with Examples
+
+Note: Here, DATE1 is always greater than DATE2 otherwise oracle returns a negative value.
+
+CURRENT_DATE() Function in Oracle:
+The CURRENT_DATE date function in Oracle is used to return the current date in the session time zone, in a value in the Gregorian calendar of datatype DATE. This function does not take any parameter. Following is the syntax to use the CURRENT_DATE function in Oracle.
+
+Syntax: CURRENT_DATE
+
+Example: The following statement shows the current date in ‘DD-MON-YYYY HH24:MI:SS’ format
+ALTER SESSION SET NLS_DATE_FORMAT = ‘DD-MON-YYYY HH24:MI:SS’;
+Output:
+
+CURRENT_DATE() Function in Oracle
+
+Let display the current date and session time zone.:
+SELECT CURRENT_DATE, SESSIONTIMEZONE FROM DUAL;
+Output:
+
+CURRENT_DATE() Date Function in Oracle
+
+Now let us change the session timezone using ALTER SESSION command:
+ALTER SESSION SET TIME_ZONE = ‘-2:0’;
+Output:
+
+CURRENT_DATE() Date Function in Oracle with Examples
+
+Now check the current date and session time zone:
+SELECT CURRENT_DATE, SESSIONTIMEZONE FROM DUAL;
+Output:
+
+Date Functions in Oracle with Examples
+
+https://dotnettutorials.net/lesson/date-functions-in-oracle/
